@@ -9,6 +9,7 @@
 <body>
     <?php
     include ('sql.php');
+	echo "hello world";
     $cId = $_GET['cId'];
     session_start();
     $account = $_SESSION['aId'];
