@@ -38,8 +38,9 @@
 
     <!--Style CDN (Bootstrap)-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-    
     <!--Style Custom-->
+    <link rel="stylesheet" href="style/Custom.css">
+    <link rel="stylesheet" href="style/RWD.css">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -54,18 +55,6 @@
 </head>
 
 <body class="vh-100">
-    <header>
-
-    </header>
-
-    <article>
-
-    </article>
-
-    <footer>
-
-    </footer> 
-
     <?php
     require('./module/connect.php'); // 載入連線模組
     require('./module/mysql.php'); // 載入資料庫操作模組
@@ -81,49 +70,141 @@
     $_SESSION['student_id'] = ''; // 學號
     $name = $_SESSION['name'];
 
-    echo "你好，$name" . "<br>";
-    echo "歡迎來到屏科大模擬選課系統，本系統除了可以讓你選課之外，還可以讓你討論課程內容，讓你知道哪一個課程最適合你";
+    $c_s_result = $link->select(['*', 'course']);
 
-    $c_s_result = $link -> select(['*', 'course']);
-
-    if ($c_s_result[0]) {
-        echo "<table border='1'>";
-        echo "<tr>";
-        echo "<td>課程代碼</td>";
-        echo "<td>開課系所</td>";
-        echo "<td>授課教師</td>";
-        echo "<td>課程名稱</td>";
-        echo "<td>開課狀態</td>";
-        echo "<td>班級</td>";
-        echo "<td>學分</td>";
-        echo "<td>修別(必、選)</td>";
-        echo "<td>上課時數</td>";
-        echo "<td>上課星期</td>
-        <td>上課節次</td>
-        ";
-        echo "<td>教室代號</td>";
-        echo "</tr>";
-        $rows = $c_s_result[1]->fetch_all(MYSQLI_ASSOC);
-        foreach ($rows as $row){
-            echo "<tr>";
-            echo "<td>" . $row['course_id'] . "</td>";
-            echo "<td>" . $row['department'] . "</td>";
-            echo "<td>" . $row['teacher'] . "</td>";
-            echo "<td>" . $row['course_name'] . "</td>";
-            echo "<td>" . $row['course_status'] . "</td>";
-            echo "<td>" . $row['class_name'] . "</td>";
-            echo "<td>" . $row['credit'] . "</td>";
-            echo "<td>" . $row['subject'] . "</td>";
-            echo "<td>" . $row['course_hours'] . "</td>";
-            echo "<td>" . $row['day_of_week'] . "</td>";
-            echo "<td>" . $row['period'] . "</td>";
-            echo "<td>" . $row['class_id'] . "</td>";
-            echo "</tr>";
-        }
-        echo "</table>";
-        echo "<a href='login.php'>登錄</a>";
-    }
+    $rows = $c_s_result[1]->fetch_all(MYSQLI_ASSOC);
     ?>
+
+    <div class="container panel">
+        <!-- 網頁加載動畫 -->
+        <div>
+        </div>
+        <header id="Header" class="row opacity-75">
+            <!-- 導覽列 -->
+            <nav id="Nav" class="col p-3 navbar navbar-expand-lg navbar-light bg-light d-inline-flex">
+
+                <div class="collapse navbar-collapse" id="navbarScroll">
+                    <ul class="navbar-nav d-flex p-2 me-auto fw-bold">
+                        <li class="nav-item">
+                            <a class="nav-link mx-3 un" aria-current="page" href=".\home.php">首頁</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link mx-3 un" href=".\login.php">登入</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link mx-3 un" href=".\my_profile.php">個人資料</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <div class="ticker-container">
+                <div id="ticker">
+                    <p>你好，<?php echo $name ?>! 歡迎來到屏科大模擬選課系統，本系統除了可以讓你選課之外，還可以讓你討論課程內容，讓你知道哪一個課程最適合你</p>
+                </div>
+            </div>
+        </header>
+
+        <main id="Main" class="row opacity-75 justify-content-center">
+            <article class="p-5 border border-3 border-white rounded rounded-5 images justify-content-center" align='center'>
+                <table class="table">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>
+                                <h1>課程代碼</h1>
+                            </th>
+                            <th>
+                                <h1>開課系所</h1>
+                            </th>
+                            <th>
+                                <h1>授課教師</h1>
+                            </th>
+                            <th>
+                                <h1>課程名稱</h1>
+                            </th>
+                            <th>
+                                <h1>開課狀態</h1>
+                            </th>
+                            <th>
+                                <h1>班級</h1>
+                            </th>
+                            <th>
+                                <h1>學分</h1>
+                            </th>
+                            <th>
+                                <h1>修別(必、選)</h1>
+                            </th>
+                            <th>
+                                <h1>上課時數</h1>
+                            </th>
+                            <th>
+                                <h1>上課星期</h1>
+                            </th>
+                            <th>
+                                <h1>上課節次</h1>
+                            </th>
+                            <th>
+                                <h1>教室代號</h1>
+                            </th>
+                            <th>
+                                <h1>加入課表</h1>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                    <?php
+                    if ($c_s_result[0]) {
+                        foreach ($rows as $row) {
+                            echo "
+                            <form action='' method='GET'>
+                                <tr>
+                                    <td>{$row['course_id']}</td>
+                                    <td>{$row['department']}</td>
+                                    <td>{$row['teacher']}</td>
+                                    <td>{$row['course_name']}</td>
+                                    <td>{$row['course_status']}</td>
+                                    <td>{$row['class_name']}</td>
+                                    <td>{$row['credit']}</td>
+                                    <td>{$row['subject']}</td>
+                                    <td>{$row['course_hours']}</td>
+                                    <td>{$row['day_of_week']}</td>
+                                    <td>{$row['period']}</td>
+                                    <td>{$row['class_id']}</td>
+                                    <input type='hidden' name='' value='' />
+                                    <button class='btn' type='submit' onclick=\"this.form.action=''\" name='add' value='加入'/>
+                                </tr>
+                            </form>";
+                        }
+                    }
+                    ?>
+                </table>
+            </article>
+
+            <!--彈出提示框(警告用)-->
+            <div class="mytoast-3">
+                <div id="liveToast-Waringg" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="false">
+                    <!-- 標題 -->
+                    <div class="toast-header">
+                        <img src="" class="me-2" alt="">
+                        <strong class="me-auto fs-2 text-danger"><i class="fa-solid fa-triangle-exclamation"></i>警告</strong>
+                        <small id="Time" class="fs-4"></small>
+                        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                    </div>
+                    <!-- 內容 -->
+                    <div class="toast-body">
+                        <p class="fw-bold fs-3"><span id="host_name_Waringg"></span></p>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+
+        </footer>
+
+    </div>
 
     <!--Font Awesome JS-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/js/all.min.js" integrity="sha512-rpLlll167T5LJHwp0waJCh3ZRf7pO6IT1+LZOhAyP6phAirwchClbTZV3iqL3BMrVxIYRbzGTpli4rfxsCK6Vw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
