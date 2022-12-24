@@ -64,7 +64,7 @@
 
     // 啟用session
     session_start();
-    $_SESSION['name'] = '請先登錄'; // 使用者帳號名稱
+    $_SESSION['name'] = ''; // 使用者帳號名稱
     $_SESSION['aId'] = ''; // 帳號資料庫id
     $_SESSION['sId'] = ''; // 學生資料庫id
     $_SESSION['student_id'] = ''; // 學號
@@ -100,87 +100,104 @@
 
             <div class="ticker-container">
                 <div id="ticker">
-                    <p>你好，<?php echo $name ?>! 歡迎來到屏科大模擬選課系統，本系統除了可以讓你選課之外，還可以讓你討論課程內容，讓你知道哪一個課程最適合你</p>
+                    <p>歡迎來到屏科大模擬選課系統，本系統除了可以讓你選課之外，還可以讓你討論課程內容，讓你知道哪一個課程最適合你</p>
                 </div>
             </div>
         </header>
 
+        <!-- 主要區塊 -->
         <main id="Main" class="row opacity-75 justify-content-center">
-            <article class="p-5 border border-3 border-white rounded rounded-5 images justify-content-center" align='center'>
-                <table class="table">
-                    <thead class="table-dark">
-                        <tr>
-                            <th>
-                                <h1>課程代碼</h1>
-                            </th>
-                            <th>
-                                <h1>開課系所</h1>
-                            </th>
-                            <th>
-                                <h1>授課教師</h1>
-                            </th>
-                            <th>
-                                <h1>課程名稱</h1>
-                            </th>
-                            <th>
-                                <h1>開課狀態</h1>
-                            </th>
-                            <th>
-                                <h1>班級</h1>
-                            </th>
-                            <th>
-                                <h1>學分</h1>
-                            </th>
-                            <th>
-                                <h1>修別(必、選)</h1>
-                            </th>
-                            <th>
-                                <h1>上課時數</h1>
-                            </th>
-                            <th>
-                                <h1>上課星期</h1>
-                            </th>
-                            <th>
-                                <h1>上課節次</h1>
-                            </th>
-                            <th>
-                                <h1>教室代號</h1>
-                            </th>
-                            <th>
-                                <h1>加入課表</h1>
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-
-                    </tbody>
-                    <?php
-                    if ($c_s_result[0]) {
-                        foreach ($rows as $row) {
-                            echo "
-                            <form action='' method='GET'>
-                                <tr>
-                                    <td>{$row['course_id']}</td>
-                                    <td>{$row['department']}</td>
-                                    <td>{$row['teacher']}</td>
-                                    <td>{$row['course_name']}</td>
-                                    <td>{$row['course_status']}</td>
-                                    <td>{$row['class_name']}</td>
-                                    <td>{$row['credit']}</td>
-                                    <td>{$row['subject']}</td>
-                                    <td>{$row['course_hours']}</td>
-                                    <td>{$row['day_of_week']}</td>
-                                    <td>{$row['period']}</td>
-                                    <td>{$row['class_id']}</td>
-                                    <input type='hidden' name='' value='' />
-                                    <button class='btn' type='submit' onclick=\"this.form.action=''\" name='add' value='加入'/>
-                                </tr>
-                            </form>";
-                        }
+            <!-- 上區塊 -->
+            <div class="">
+                <article class="p-5 border border-3 border-white rounded rounded-5 images justify-content-center" align='center'>
+                <?php
+                    if(isset($name)){
+                        echo"
+                        <h2 class='p-2 fw-bold'>立即註冊，即可使用更多進階功能!</h2>
+                        ";
                     }
-                    ?>
-                </table>
-            </article>
+                ?>
+                </article>
+            </div>
+
+            <!-- 下區塊 -->
+            <div class="">
+                <article class="p-5 border border-3 border-white rounded rounded-5 images justify-content-center" align='center'>
+                    <table class="table">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>
+                                    <h1>課程代碼</h1>
+                                </th>
+                                <th>
+                                    <h1>開課系所</h1>
+                                </th>
+                                <th>
+                                    <h1>授課教師</h1>
+                                </th>
+                                <th>
+                                    <h1>課程名稱</h1>
+                                </th>
+                                <th>
+                                    <h1>開課狀態</h1>
+                                </th>
+                                <th>
+                                    <h1>班級</h1>
+                                </th>
+                                <th>
+                                    <h1>學分</h1>
+                                </th>
+                                <th>
+                                    <h1>修別(必、選)</h1>
+                                </th>
+                                <th>
+                                    <h1>上課時數</h1>
+                                </th>
+                                <th>
+                                    <h1>上課星期</h1>
+                                </th>
+                                <th>
+                                    <h1>上課節次</h1>
+                                </th>
+                                <th>
+                                    <h1>教室代號</h1>
+                                </th>
+                                <th>
+                                    <h1>加入課表</h1>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            if ($c_s_result[0]) {
+                                foreach ($rows as $row) {
+                                    echo "
+                                <form action='' method='GET'>
+                                    <tr>
+                                        <td>{$row['course_id']}</td>
+                                        <td>{$row['department']}</td>
+                                        <td>{$row['teacher']}</td>
+                                        <td>{$row['course_name']}</td>
+                                        <td>{$row['course_status']}</td>
+                                        <td>{$row['class_name']}</td>
+                                        <td>{$row['credit']}</td>
+                                        <td>{$row['subject']}</td>
+                                        <td>{$row['course_hours']}</td>
+                                        <td>{$row['day_of_week']}</td>
+                                        <td>{$row['period']}</td>
+                                        <td>{$row['class_id']}</td>
+                                        <td>
+                                            <input class='btn btn-outline-info' type='submit' onclick=\"this.form.action=''\" name='add' value='加入'/>
+                                        </td>
+                                    </tr>
+                                </form>";
+                                }
+                            }
+                            ?>
+                        </tbody>
+                    </table>
+                </article>
+            </div>
 
             <!--彈出提示框(警告用)-->
             <div class="mytoast-3">
