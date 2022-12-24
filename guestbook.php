@@ -9,7 +9,7 @@
 <body>
     <?php
     include ('sql.php');
-    $cId = $_GET['cId'];
+    #$cId = $_GET['cId'];
     session_start();
     $account = $_SESSION['aId'];
     $sId = $_SESSION['sId'];
