@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1
--- 產生時間： 2022-12-24 08:16:04
+-- 產生時間： 2022-12-25 15:54:04
 -- 伺服器版本： 10.4.25-MariaDB
 -- PHP 版本： 8.1.10
 
@@ -28,11 +28,18 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `account` (
-  `aId` int(10) NOT NULL,
-  `username` varchar(255) NOT NULL,
-  `password` varchar(14) NOT NULL,
-  `student_id` varchar(255) NOT NULL
+  `aId` int(10) NOT NULL COMMENT '帳號id',
+  `username` varchar(255) NOT NULL COMMENT '帳號名稱',
+  `password` varchar(14) NOT NULL COMMENT '帳號密碼',
+  `student_id` varchar(255) NOT NULL COMMENT '學號'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='帳號';
+
+--
+-- 傾印資料表的資料 `account`
+--
+
+INSERT INTO `account` (`aId`, `username`, `password`, `student_id`) VALUES
+(17, 'RETEX', 'aa', 'aa');
 
 -- --------------------------------------------------------
 
@@ -55,6 +62,25 @@ CREATE TABLE `course` (
   `period` int(5) NOT NULL COMMENT '上課節次',
   `class_id` varchar(10) NOT NULL COMMENT '教室代號、名稱'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='課程';
+
+--
+-- 傾印資料表的資料 `course`
+--
+
+INSERT INTO `course` (`cId`, `department`, `teacher`, `course_id`, `course_name`, `course_status`, `class_name`, `credit`, `subject`, `course_hours`, `day_of_week`, `period`, `class_id`) VALUES
+(24, '農園系', '李家興', 1003, '外語實務', '開', '四農園一A', 0, '必', 0, 7, 0, ' '),
+(25, '農園系', '李家興', 1004, '生活服務教育', '開', '四農園一A', 0, '必', 2, 5, 3, 'HO 306'),
+(26, '農園系', '李家興', 1004, '生活服務教育', '開', '四農園一A', 0, '必', 2, 5, 4, 'HO 306'),
+(27, '農園系', '鍾宇翡', 1023, '國文(閱讀與寫作)(1)', '開', '四農園一A', 2, '必', 2, 2, 3, 'HO 305'),
+(28, '農園系', '鍾宇翡', 1023, '國文(閱讀與寫作)(1)', '開', '四農園一A', 2, '必', 2, 2, 4, 'HO 305'),
+(29, '農園系', '李家興', 1003, '外語實務', '開', '四農園一A', 0, '必', 0, 7, 0, ' '),
+(30, '農園系', '李家興', 1004, '生活服務教育', '開', '四農園一A', 0, '必', 2, 5, 3, 'HO 306'),
+(31, '農園系', '李家興', 1004, '生活服務教育', '開', '四農園一A', 0, '必', 2, 5, 4, 'HO 306'),
+(32, '農園系', '鍾宇翡', 1023, '國文(閱讀與寫作)(1)', '開', '四農園一A', 2, '必', 2, 2, 3, 'HO 305'),
+(33, '農園系', '鍾宇翡', 1023, '國文(閱讀與寫作)(1)', '開', '四農園一A', 2, '必', 2, 2, 4, 'HO 305'),
+(34, '農園系', '李家興', 1003, '外語實務', '開', '四農園一A', 0, '必', 0, 7, 0, ' '),
+(35, '農園系', '李家興', 1004, '生活服務教育', '開', '四農園一A', 0, '必', 2, 5, 3, 'HO 306'),
+(36, '農園系', '李家興', 1004, '生活服務教育', '開', '四農園一A', 0, '必', 2, 5, 4, 'HO 306');
 
 -- --------------------------------------------------------
 
@@ -86,6 +112,13 @@ CREATE TABLE `student` (
   `birthday` datetime DEFAULT NULL COMMENT '生日'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='學生';
 
+--
+-- 傾印資料表的資料 `student`
+--
+
+INSERT INTO `student` (`sId`, `aId`, `name`, `student_id`, `grade`, `birthday`) VALUES
+(1, 17, 'RETEX', 'aa', 1, '2022-12-02 00:00:00');
+
 -- --------------------------------------------------------
 
 --
@@ -115,8 +148,7 @@ ALTER TABLE `account`
 -- 資料表索引 `course`
 --
 ALTER TABLE `course`
-  ADD PRIMARY KEY (`cId`) USING BTREE,
-  ADD UNIQUE KEY `course_name` (`course_name`);
+  ADD PRIMARY KEY (`cId`) USING BTREE;
 
 --
 -- 資料表索引 `guestbook`
@@ -150,13 +182,13 @@ ALTER TABLE `subject_timetable`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `account`
 --
 ALTER TABLE `account`
-  MODIFY `aId` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `aId` int(10) NOT NULL AUTO_INCREMENT COMMENT '帳號id', AUTO_INCREMENT=18;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `course`
 --
 ALTER TABLE `course`
-  MODIFY `cId` int(10) NOT NULL AUTO_INCREMENT COMMENT '課程id';
+  MODIFY `cId` int(10) NOT NULL AUTO_INCREMENT COMMENT '課程id', AUTO_INCREMENT=37;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `guestbook`
@@ -168,7 +200,7 @@ ALTER TABLE `guestbook`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `student`
 --
 ALTER TABLE `student`
-  MODIFY `sId` int(10) NOT NULL AUTO_INCREMENT COMMENT '學生id';
+  MODIFY `sId` int(10) NOT NULL AUTO_INCREMENT COMMENT '學生id', AUTO_INCREMENT=2;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `subject_timetable`
