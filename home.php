@@ -108,21 +108,24 @@
         <!-- 主要區塊 -->
         <main id="Main" class="row opacity-75 justify-content-center">
             <!-- 上區塊 -->
-            <div class="">
-                <article class="p-5 border border-3 border-white rounded rounded-5 images justify-content-center" align='center'>
+            <div class="col-9 col-sm-9 col-md-9 col-lg-9 col-xl-9 col-xxl-9 mb-5 myWidth">
+                <article class="p-3 border border-3 border-white rounded rounded-5 justify-content-center" align='center'>
                 <?php
                     if(isset($name)){
                         echo"
-                        <h2 class='p-2 fw-bold'>立即註冊，即可使用更多進階功能!</h2>
-                        ";
+                            <h2 class='fw-bold'>立即註冊，即可使用更多進階功能!</h2>
+                            <button type='button' class='btn btn-outline-danger'> 
+                                <a href='#' class='text-reset'> 註冊 </a>
+                            </button>
+                            ";
                     }
                 ?>
                 </article>
             </div>
 
             <!-- 下區塊 -->
-            <div class="">
-                <article class="p-5 border border-3 border-white rounded rounded-5 images justify-content-center" align='center'>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
+                <article class="p-5 border border-3 border-white rounded rounded-5 justify-content-center" align='center'>
                     <table class="table">
                         <thead class="table-dark">
                             <tr>
@@ -169,28 +172,28 @@
                         </thead>
                         <tbody>
                             <?php
-                            if ($c_s_result[0]) {
+                            if($c_s_result[0]) {
                                 foreach ($rows as $row) {
                                     echo "
-                                <form action='' method='GET'>
-                                    <tr>
-                                        <td>{$row['course_id']}</td>
-                                        <td>{$row['department']}</td>
-                                        <td>{$row['teacher']}</td>
-                                        <td>{$row['course_name']}</td>
-                                        <td>{$row['course_status']}</td>
-                                        <td>{$row['class_name']}</td>
-                                        <td>{$row['credit']}</td>
-                                        <td>{$row['subject']}</td>
-                                        <td>{$row['course_hours']}</td>
-                                        <td>{$row['day_of_week']}</td>
-                                        <td>{$row['period']}</td>
-                                        <td>{$row['class_id']}</td>
-                                        <td>
-                                            <input class='btn btn-outline-info' type='submit' onclick=\"this.form.action=''\" name='add' value='加入'/>
-                                        </td>
-                                    </tr>
-                                </form>";
+                                    <form action='' method='GET'>
+                                        <tr class='justify-content-center table-primary'>
+                                            <td>{$row['course_id']}</td>
+                                            <td>{$row['department']}</td>
+                                            <td>{$row['teacher']}</td>
+                                            <td>{$row['course_name']}</td>
+                                            <td>{$row['course_status']}</td>
+                                            <td>{$row['class_name']}</td>
+                                            <td>{$row['credit']}</td>
+                                            <td>{$row['subject']}</td>
+                                            <td>{$row['course_hours']}</td>
+                                            <td>{$row['day_of_week']}</td>
+                                            <td>{$row['period']}</td>
+                                            <td>{$row['class_id']}</td>
+                                            <td>
+                                                <input class='btn btn-outline-info p-3' type='submit' onclick=\"this.form.action=''\" name='add' value='加入'/>
+                                            </td>
+                                        </tr>
+                                    </form>";
                                 }
                             }
                             ?>
