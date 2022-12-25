@@ -153,6 +153,7 @@ html {
 /* body */
 
 body {
+    height: 100%;
     font-size: 1.8vmin !important;
 }
 
@@ -187,7 +188,12 @@ body {
 #Nav {
     padding: 15px;
     background-color: rgb(233, 233, 233);
-    box-shadow: 0px 0px 15px 1px rgb(226, 217, 85);
+    box-shadow: 0px 0px 15px 1px rgb(226, 165, 85);
+    border-radius: 10px;
+}
+
+#Nav::before {
+    filter: blur(10px);
 }
 
 
@@ -201,9 +207,9 @@ body {
     bottom: 0;
     height: auto;
     width: 100%;
-    padding: 0px;
+    padding: 5px;
     background-color: rgb(70, 70, 70);
-    box-shadow: 0px 0px 10px 1.5px rgb(200, 120, 210);
+    box-shadow: 0px 0px 10px 1.5px rgb(210, 120, 194);
     border-radius: 10px;
     overflow: hidden;
 }
@@ -218,7 +224,7 @@ body {
     /*perspective: 25000px;
     perspective-origin: 300% -300%;*/
     /*animation-play-state: paused;*/
-    animation: my-ticker 20s infinite cubic-bezier(0, 0, 1, 1);
+    animation: my-ticker 25s infinite cubic-bezier(0, 0, 1, 1);
 }
 
 #ticker p {
@@ -241,16 +247,16 @@ body {
 .un {
     display: inline-block;
     padding-bottom: 3px;
-    background-image: linear-gradient(rgb(0, 220, 255), rgb(0, 220, 255));
-    background-position: 0 100%;
-    background-size: 0% 3px;
+    background-image: linear-gradient(rgb(255, 190, 40), rgb(255, 190, 40));
+    background-position: 50% 100%;
+    background-size: 0% 3.5px;
     background-repeat: no-repeat;
     transition: background-size 0.3s, background-position 0s 0.3s;
 }
 
 .un:hover {
-    background-position: 100% 100%;
-    background-size: 100% 3px;
+    background-position: 50% 100%;
+    background-size: 100% 3.5px;
 }
 
 .un-red {
@@ -291,8 +297,9 @@ body {
     background-color: rgb(233, 233, 233);
     box-shadow: 0px 0px 10px 0px rgb(100, 200, 200);
     top: 20px;
-    padding-top: 5rem;
-    padding-bottom: 10rem;
+    padding-top: 2rem;
+    padding-bottom: 5rem;
+    border-radius: 10px;
 }
 
 #hide {

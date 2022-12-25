@@ -39,7 +39,7 @@
         height: 55rem;
     }
     body {
-        font-size: 2vmin !important;
+        font-size: 2min !important;
     }
     .particles-js-canvas-el {
         height: 125rem !important;

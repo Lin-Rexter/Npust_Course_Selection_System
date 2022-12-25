@@ -77,12 +77,13 @@
 
     <div class="container panel">
         <!-- 網頁加載動畫 -->
-        <div>
-        </div>
-        <header id="Header" class="row opacity-75">
+        <!-- <div></div> -->
+        <header id="Header" class="row opacity-75 mt-3">
             <!-- 導覽列 -->
-            <nav id="Nav" class="col p-3 navbar navbar-expand-lg navbar-light bg-light d-inline-flex">
-
+            <nav id="Nav" class="col col-12 col-sm-12 col-md-12 col-lg-12  p-3 navbar navbar-expand-lg navbar-light bg-light d-inline-flex">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
                 <div class="collapse navbar-collapse" id="navbarScroll">
                     <ul class="navbar-nav d-flex p-2 me-auto fw-bold">
                         <li class="nav-item">
@@ -108,97 +109,47 @@
         <!-- 主要區塊 -->
         <main id="Main" class="row opacity-75 justify-content-center">
             <!-- 上區塊 -->
-            <div class="col-9 col-sm-9 col-md-9 col-lg-9 col-xl-9 col-xxl-9 mb-5 myWidth">
+            <div class="col-11 col-sm-9 col-md-9 col-lg-9 col-xl-9 col-xxl-9 mb-5">
                 <article class="p-3 border border-3 border-white rounded rounded-5 justify-content-center" align='center'>
-                <?php
-                    if(isset($name)){
-                        echo"
+                    <?php
+                    if (isset($name)) {
+                        echo "
                             <h2 class='fw-bold'>立即註冊，即可使用更多進階功能!</h2>
-                            <button type='button' class='btn btn-outline-danger'> 
-                                <a href='#' class='text-reset'> 註冊 </a>
+                            <button type='button' class='btn btn-outline-danger fw-bold fs-3'> 
+                                <a href='#' class='text-reset text-decoration-none'> 註冊 </a>
                             </button>
                             ";
                     }
-                ?>
+                    ?>
                 </article>
             </div>
 
             <!-- 下區塊 -->
             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
                 <article class="p-5 border border-3 border-white rounded rounded-5 justify-content-center" align='center'>
-                    <table class="table">
-                        <thead class="table-dark">
-                            <tr>
-                                <th>
-                                    <h1>課程代碼</h1>
-                                </th>
-                                <th>
-                                    <h1>開課系所</h1>
-                                </th>
-                                <th>
-                                    <h1>授課教師</h1>
-                                </th>
-                                <th>
-                                    <h1>課程名稱</h1>
-                                </th>
-                                <th>
-                                    <h1>開課狀態</h1>
-                                </th>
-                                <th>
-                                    <h1>班級</h1>
-                                </th>
-                                <th>
-                                    <h1>學分</h1>
-                                </th>
-                                <th>
-                                    <h1>修別(必、選)</h1>
-                                </th>
-                                <th>
-                                    <h1>上課時數</h1>
-                                </th>
-                                <th>
-                                    <h1>上課星期</h1>
-                                </th>
-                                <th>
-                                    <h1>上課節次</h1>
-                                </th>
-                                <th>
-                                    <h1>教室代號</h1>
-                                </th>
-                                <th>
-                                    <h1>加入課表</h1>
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php
-                            if($c_s_result[0]) {
-                                foreach ($rows as $row) {
-                                    echo "
-                                    <form action='' method='GET'>
-                                        <tr class='justify-content-center table-primary'>
-                                            <td>{$row['course_id']}</td>
-                                            <td>{$row['department']}</td>
-                                            <td>{$row['teacher']}</td>
-                                            <td>{$row['course_name']}</td>
-                                            <td>{$row['course_status']}</td>
-                                            <td>{$row['class_name']}</td>
-                                            <td>{$row['credit']}</td>
-                                            <td>{$row['subject']}</td>
-                                            <td>{$row['course_hours']}</td>
-                                            <td>{$row['day_of_week']}</td>
-                                            <td>{$row['period']}</td>
-                                            <td>{$row['class_id']}</td>
-                                            <td>
-                                                <input class='btn btn-outline-info p-3' type='submit' onclick=\"this.form.action=''\" name='add' value='加入'/>
-                                            </td>
-                                        </tr>
-                                    </form>";
-                                }
+                    <div class="row row-cols-1 row-cols-md-6 g-4">
+                        <?php
+                        if ($c_s_result[0]) {
+                            foreach ($rows as $row) {
+                                echo "
+                                <div class='col'>
+                                    <div class='card' style='width: 25rem;'>
+                                        <img src='https://2020tecphfair.nsysu.edu.tw/file/dw/rbiVE6CCTjeaBj4u' class='card-img-top' alt='...'>
+                                        <form action='' method='GET'>
+                                            <div class='card-body'>
+                                                <h5 class='card-title'>{$row['course_name']}</h5>
+                                                <p class='card-text'>{$row['course_id']} | {$row['teacher']}</p>
+                                                <input class='btn btn-outline-success p-3 fw-bold fs-4' type='submit' onclick=\"this.form.action=''\" name='detail' value='詳細'/>
+                                                <input class='btn btn-outline-info p-3 fw-bold fs-4' type='submit' onclick=\"this.form.action=''\" name='add' value='加入'/>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                ";
                             }
-                            ?>
-                        </tbody>
-                    </table>
+                        }
+                        ?>
+                    </div>
                 </article>
             </div>
 
