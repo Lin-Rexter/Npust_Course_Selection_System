@@ -1,6 +1,7 @@
 <?php
+	// 請先將config.ini複製一份為config-自訂.ini，然後再備份在其他地方，需要使用時，再放到這個目錄中!
 	// 讀取ini設定檔內容
-	$path = __DIR__ . "/config.ini";
+	$path = __DIR__ . "/config-自訂.ini";
 	$ini = parse_ini_file($path);
 
 	// 讀取設定並設定變數
