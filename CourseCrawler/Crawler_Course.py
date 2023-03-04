@@ -148,13 +148,3 @@ else:
     print("已取消存入!\n")
     os.system("pause")
     sys.exit(0)
-
-
-'''
-    with connection.cursor() as cursor:
-        # Read a single record
-        sql = "SELECT `id`, `password` FROM `users` WHERE `email`=%s"
-        cursor.execute(sql, ('webmaster@python.org',))
-        result = cursor.fetchall()
-        print(result)
-'''
