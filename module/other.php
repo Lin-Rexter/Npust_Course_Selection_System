@@ -1,14 +1,23 @@
 <?php
+    // session操作
+    class session{
+        function __construct($mes){
+            $this->$mes = $mes;
+        }
+
+        
+    }
+
     // 將表單要傳送的值編碼
-    function en_url($value){
-        $enUrlObj = serialize($value); // 進行解碼
+    function en_url($values){
+        $enUrlObj = serialize($values); // 進行解碼
         $serializeObj = urlencode($enUrlObj); // 再將解碼後的字串解序列化
         return $serializeObj;
     }
 
     // 將表單傳送的值解碼
-    function de_url($value){
-        $unUrlObj = urldecode($value); // 進行解碼
+    function de_url($values){
+        $unUrlObj = urldecode($values); // 進行解碼
         $unserializeObj = unserialize(stripslashes($unUrlObj)); // 將解碼後的字串解序列化(還原初始資料結構)
         return $unserializeObj;
     }

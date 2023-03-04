@@ -11,10 +11,17 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.ui import Select
 from bs4 import BeautifulSoup
+#from rich.prompt import Prompt
 from prompt_toolkit import prompt
 from prompt_toolkit.shortcuts import message_dialog
 from prompt_toolkit.shortcuts import input_dialog
 from prompt_toolkit.shortcuts import yes_no_dialog
+#from pprint import pprint
+#from bs4 import BeautifulSoup
+#from .user_agent import UA
+#from urllib.parse import urljoin # 解析相對網址
+
+#name = Prompt.ask("Enter your name", choices=["Paul", "Jessica", "Duncan"], default="Paul")
 
 os.system("mode con cols=135 lines=45")
 
@@ -141,3 +148,13 @@ else:
     print("已取消存入!\n")
     os.system("pause")
     sys.exit(0)
+
+
+'''
+    with connection.cursor() as cursor:
+        # Read a single record
+        sql = "SELECT `id`, `password` FROM `users` WHERE `email`=%s"
+        cursor.execute(sql, ('webmaster@python.org',))
+        result = cursor.fetchall()
+        print(result)
+'''

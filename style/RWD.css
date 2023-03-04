@@ -11,9 +11,14 @@
     .particles-js-canvas-el {
         height: 100rem !important;
     }
+    .login,
+    .sign_up {
+        width: 40%;
+        height: 70%;
+    }
 }
 
-@media screen and (min-width:64.0625em) and (max-width:80em) {
+@media screen and (min-width:64.0625em) and (max-width:82.0625em) {
     #Main {
         height: 100%;
     }
@@ -26,9 +31,14 @@
     .particles-js-canvas-el {
         height: 140rem !important;
     }
+    .login,
+    .sign_up {
+        width: 60%;
+        height: 75%;
+    }
 }
 
-@media screen and (min-width: 48em) and (max-width:64em) {
+@media screen and (min-width: 48em) and (max-width:64.0625em) {
     #Main {
         height: 100%;
     }
@@ -44,9 +54,14 @@
     .particles-js-canvas-el {
         height: 125rem !important;
     }
+    .login,
+    .sign_up {
+        width: 70%;
+        height: 80%;
+    }
 }
 
-@media screen and (min-width: 48em) and (max-width:64em) and (orientation: landscape) {
+@media screen and (min-width: 48em) and (max-width:64.0625em) and (orientation: landscape) {
     #Main {
         height: 100%;
     }
@@ -61,6 +76,11 @@
     }
     .particles-js-canvas-el {
         height: 130rem !important;
+    }
+    .login,
+    .sign_up {
+        width: 75%;
+        height: 85%;
     }
 }
 
@@ -86,11 +106,18 @@
     .alert {
         margin: 0;
     }
+    .login,
+    .sign_up {
+        width: 90%;
+        height: 95%;
+    }
 }
 
 @media screen and (max-width: 30em) {
-    #Main {
-        height: 100%;
+    Main {
+        height: 100% !important;
+        width: 100% !important;
+        padding: 0 !important;
     }
     #btn-dog {
         width: 100%;
@@ -106,6 +133,8 @@
     }
     body {
         font-size: 4vmin !important;
+        height: 100% !important;
+        width: 100% !important;
     }
     .particles-js-canvas-el {
         height: 120rem !important;
@@ -115,5 +144,25 @@
     }
     .alert {
         margin: 0;
+    }
+    .container-fluid {
+        height: 100% !important;
+        width: 100% !important;
+    }
+    .login,
+    .sign_up {
+        width: 100% !important;
+        height: 100% !important;
+    }
+    .floating-content {
+        max-width: 80% !important;
+    }
+    .g-5,
+    .gx-5 {
+        --bs-gutter-x: 0rem !important;
+    }
+    .g-3,
+    .gy-3 {
+        --bs-gutter-y: 2vh !important;
     }
 }
